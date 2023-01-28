@@ -30,9 +30,7 @@ struct ContentView: View {
             .ignoresSafeArea()
             
             Image(uiImage: ballArray.randomElement() ?? UIImage())
-            
         }
-        
         .background(
             Color(.systemCyan)
                 .scaledToFill()
