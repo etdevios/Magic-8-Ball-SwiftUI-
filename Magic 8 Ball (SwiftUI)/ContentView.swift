@@ -8,14 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var ballArray = [ #imageLiteral(resourceName: "ball1"), #imageLiteral(resourceName: "ball2"), #imageLiteral(resourceName: "ball5"), #imageLiteral(resourceName: "ball3"), #imageLiteral(resourceName: "ball4")]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            VStack {
+                Text("Ask Me Anything")
+                    .font(.system(size: 40))
+                    .foregroundColor(.white)
+                    .frame(maxHeight: .infinity)
+
+                Button("Ask") {
+                    ballArray.shuffle()
+                }
+                .font(.system(size: 40))
+                .foregroundColor(Color(.systemCyan))
+                .frame(width: 115, height: 80, alignment: .center)
+                .background(Color(.white))
+                .frame(maxHeight: .infinity)
+            }
+            .ignoresSafeArea()
+            
+            Image(uiImage: ballArray.randomElement() ?? UIImage())
+            
         }
-        .padding()
+        
+        .background(
+            Color(.systemCyan)
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
     }
 }
 
